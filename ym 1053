@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class PerfectNumbersFinder {
+    
+    public static boolean isPerfect(int number) {
+        int sum = 1; 
+        
+        
+        for (int i = 2; i * i <= number; i++) {
+            if (number % i == 0) {
+                sum += i;
+                if (i != number / i) {
+                    sum += number / i;
+                }
+            }
+        }
+
+        return number != 1 && sum == number;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        sc.close();
+
+        for (int i = 2; i <= n; i++) {
+            if (isPerfect(i)) {
+                System.out.print(i + " ");
+            }
+        }
+    }
+}
