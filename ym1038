@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class WizardDuel {
+    
+    public static int gcd(int a, int b) {
+        if (b == 0) return a;
+        return gcd(b, a % b);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int gokulPower = scanner.nextInt();
+        int minorPower = scanner.nextInt();
+        int totalPower = scanner.nextInt();
+
+        int gokulScore = 0;
+        int minorScore = 0;
+
+        boolean gokulTurn = true;
+
+        while (totalPower > 0) {
+            int currentGCD;
+
+            if (gokulTurn) {
+                currentGCD = gcd(gokulPower, totalPower);
+                gokulScore += currentGCD;
+            } else {
+                currentGCD = gcd(minorPower, totalPower);
+                minorScore += currentGCD;
+            }
+
+            totalPower -= currentGCD;
+            gokulTurn = !gokulTurn;
+        }
+
+        if (gokulScore > minorScore) {
+            System.out.println("Winner: Gokul");
+        } else if (minorScore > gokulScore) {
+            System.out.println("Winner: Minor");
+        } else {
+            System.out.println("It's a draw!");
+        }
+
+        scanner.close();
+    }
+}
