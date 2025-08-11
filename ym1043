@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+public class EldoriaPriceCalculator {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int nails = sc.nextInt();
+        String middle = sc.next();
+        sc.close();
+
+        boolean[] usedDigits = new boolean[10];
+
+        
+        for (char ch : middle.toCharArray()) {
+            usedDigits[ch - '0'] = true;
+        }
+
+        int maxPricePerNail = 0;
+        long bestFullPrice = 0;
+        int bestFirstDigit = -1;
+        int bestLastDigit = -1;
+
+    
+        for (int first = 1; first <= 9; first++) {
+            if (usedDigits[first]) continue;
+
+            for (int last = 0; last <= 9; last++) {
+                if (usedDigits[last]) continue;
+                if (first == last) continue; 
+
+                String fullPriceStr = first + middle + last;
+                long fullPrice = Long.parseLong(fullPriceStr);
+                int pricePerNail = (int) (fullPrice / nails);
+
+                
+                if (pricePerNail > maxPricePerNail ||
+                    (pricePerNail == maxPricePerNail && fullPrice > bestFullPrice)) {
+
+                    maxPricePerNail = pricePerNail;
+                    bestFullPrice = fullPrice;
+                    bestFirstDigit = first;
+                    bestLastDigit = last;
+                }
+            }
+        }
+
+        if (bestFirstDigit != -1 && bestLastDigit != -1) {
+            System.out.println(bestFirstDigit + " " + bestLastDigit + " " + maxPricePerNail);
+        } else {
+            System.out.println("Impossible!");
+        }
+    }
+}
