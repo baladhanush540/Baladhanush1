@@ -1,0 +1,13 @@
+package Hcakerrankweek2;
+
+import java.util.Scanner;
+public class Ym1069 {
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String a=sc.nextLine();
+        
+        System.out.println("The cosmic resonance of your phrase unfolds: "+a);
+        
+    }
+}
