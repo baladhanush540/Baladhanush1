@@ -1,0 +1,22 @@
+import java.util.Scanner;
+public class AbbreviationAlchemy {
+    public static void main(String[] args) {
+        Scanner scroll = new Scanner(System.in);
+        int n = scroll.nextInt();
+        scroll.nextLine();
+
+        for (int i = 0; i < n; i++) {
+            String word = scroll.nextLine();
+            int length = word.length();
+
+            if (length > 10) {
+                char first = word.charAt(0);
+                char last = word.charAt(length - 1);
+                int middleCount = length - 2;
+                System.out.println("" + first + middleCount + last);
+            } else {
+                System.out.println(word);
+            }
+        }
+    }
+} 
