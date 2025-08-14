@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class CaseCascadeCarnival {
+    public static void main(String[] args) {
+        Scanner scroll = new Scanner(System.in);
+        String chant = scroll.nextLine();
+        char[] glyphs = new char[chant.length()];
+        for (int i = 0; i < chant.length(); i++) {
+            char symbol = chant.charAt(i);
+            if (symbol >= 'A' && symbol <= 'Z') {
+                glyphs[i] = (char)(symbol + 32);
+            }
+            else if (symbol >= 'a' && symbol <= 'z') {
+                glyphs[i] = (char)(symbol - 32);
+            }
+            else {
+                glyphs[i] = symbol;
+            }
+        }
+        System.out.print("Case Cascade Magic Unleashed! The ");
+        for (int i = 0; i < glyphs.length; i++) {
+            System.out.print(glyphs[i]);
+        }
+        System.out.println(" transformation is complete.");
+    }
+} 
