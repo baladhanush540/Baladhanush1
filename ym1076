@@ -1,0 +1,19 @@
+import java.util.Scanner;
+public class VowelVoyage {
+    public static void main(String[] args) {
+        Scanner seeker = new Scanner(System.in);
+        String melody = seeker.nextLine();
+        int vowelCount = 0;
+        for (int i = 0; i < melody.length(); i++) {
+            char rune = melody.charAt(i);
+            if (rune == 'A' || rune == 'a' ||
+                rune == 'E' || rune == 'e' ||
+                rune == 'I' || rune == 'i' ||
+                rune == 'O' || rune == 'o' ||
+                rune == 'U' || rune == 'u') {
+                vowelCount++;
+            }
+        }
+        System.out.println("Vowel Voyage Completed! Number of vowels: " + vowelCount);
+    }
+} 
